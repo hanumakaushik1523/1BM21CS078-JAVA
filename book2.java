@@ -1,54 +1,56 @@
 import java.util.*;
-import java.lang.*;
-import java.util.Scanner;
-class book
-{
-      String name,author;
-      int price, num_pages;  
-     void getval()
-     {
-     
-       Scanner sc=new Scanner(System.in);
-       System.out.println("Enter book name:");
-       name=sc.nextLine();
-
-       System.out.println("Enter author name");
-       author=sc.nextLine();
-       System.out.println("Enter price ");
-       price=sc.nextInt();
-       System.out.println("Enter No. of pages");
-       num_pages=sc.nextInt();
-     }
-    void display()
-     {
-         System.out.println("Details of the book:");
-         System.out.println("name of the book :"+name);
-         System.out.println("author of book: "+author);
-         System.out.println("book price :"+price);
-         System.out.println("number of pages :"+num_pages);
-     }
+class books {
+Scanner sc = new Scanner(System.in);
+String name,author;
+int price,num_pages;
+books(){
 }
+
+books(String name,String author,int price,int num_pages)
+{
+this.name = name;
+this.author = author;
+this.price = price;
+this.num_pages = num_pages;
+}
+
+void getdata()
+{
+System.out.println("Enter the name of the book");
+name = sc.nextLine();
+System.out.println("Enter the name of the author");
+author = sc.nextLine();
+System.out.println("Enter the price");
+price = sc.nextInt();
+System.out.println("Enter the number of pages");
+num_pages = sc.nextInt();
+}
+public String toString()
+{
+return ("Name : "+name+"\nAuthor : "+author+"\nPrice : "+price+"\nNumber of pages : "+num_pages);
+}
+}
+
 class Main
 {
-  public static void main(String args[])
-   {
-     int n;
-     Scanner sc=new Scanner(System.in) ;
-     System.out.println("enter the number of books:");
-     n=sc.nextInt();
-     
-     book ob[]=new book[n];
-     for(int i=0;i<n;i++)
-     {
-        ob[i]=new book();
-     }
-     for(int j=0;j<n;j++)
-     {
-        ob[j].getval();
-     }
-     for(int j=0;j<n;j++)
-     {
-        ob[j].display();
-     }
-   }
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+books b1 = new books("Mehta","neil",56,154);
+System.out.println("Constructor values : \n"+b1);
+System.out.println("Enter the number of object of books");
+int n = sc.nextInt();
+books s[] = new books[n];
+for(int i = 0;i<n;i++)
+{
+s[i] = new books();
+System.out.println("Enter the details of "+(i+1)+"book");
+s[i].getdata();
+}
+for(int i = 0;i<n;i++)
+{
+System.out.println("\nDetails of the book"+(i+1));
+System.out.println(s[i]);
+}
+}
 }
